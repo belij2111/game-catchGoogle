@@ -76,43 +76,63 @@ function runGoogleJumpInterval() {
 
 runGoogleJumpInterval()
 
+function movePlayer(delta, player) {
+	const newX = player.x + delta.x
+	const newY = player.y + delta.y
+	if (!IsNewCoordsInsideGrid(newX, newY)) return
+	if (!IsCellOfGridIsFree(newX, newY)) return
+	player.x = newX
+	player.y = newY
+	notify()
+}
+function IsNewCoordsInsideGrid(x, y) {
+	if (x < 0 || y < 0 || x >= DATA.cells.columnsCount || y >= DATA.cells.rowsCount) return false
+	return true
+}
+function IsCellOfGridIsFree(newX, newY) {
+	if (newX === DATA.coords.player1.x && newY === DATA.coords.player1.y) return false
+	if (newX === DATA.coords.player2.x && newY === DATA.coords.player2.y) return false
+	return true
+}
+
 export function movePlayer1Up() {
-	if (selectPlayer1Coords().y > 0) {
-		DATA.coords.player1.y--
-		notify()
-	}
+	movePlayer({ x: 0, y: -1 }, DATA.coords.player1)
 }
 export function movePlayer1Down() {
-	if (selectPlayer1Coords().y < selectCells().y - 1) {
-		DATA.coords.player1.y++
-		notify()
-	}
+	movePlayer({ x: 0, y: 1 }, DATA.coords.player1)
 }
 export function movePlayer1Left() {
-	if (selectPlayer1Coords().x > 0) {
-		DATA.coords.player1.x--
-		notify()
-	}
+	movePlayer({ x: -1, y: 0 }, DATA.coords.player1)
 }
 export function movePlayer1Right() {
-	if (selectPlayer1Coords().x < selectCells().x - 1) {
-		DATA.coords.player1.x++
-		notify()
-	}
+	movePlayer({ x: 1, y: 0 }, DATA.coords.player1)
 }
 
-// export function catchGoogle() {
-// 	DATA.catchPoints++
+export function movePlayer2Up() {
+	movePlayer({ x: 0, y: -1 }, DATA.coords.player2)
+}
+export function movePlayer2Down() {
+	movePlayer({ x: 0, y: 1 }, DATA.coords.player2)
+}
+export function movePlayer2Left() {
+	movePlayer({ x: -1, y: 0 }, DATA.coords.player2)
+}
+export function movePlayer2Right() {
+	movePlayer({ x: 1, y: 0 }, DATA.coords.player2)
+}
 
-// 	if (DATA.catchPoints === DATA.winPoints) {
-// 		DATA.win = true
-// 		clearInterval(googleJumpIntervalId)
-// 	} else {
-// 		changeGoogleCoordinates()
-// 		runGoogleJumpInterval()
-// 	}
-// 	notify()
-// }
+export function catchGoogle() {
+	DATA.catchPoints++
+
+	if (DATA.catchPoints === DATA.winPoints) {
+		DATA.win = true
+		clearInterval(googleJumpIntervalId)
+	} else {
+		changeGoogleCoordinates()
+		runGoogleJumpInterval()
+	}
+	notify()
+}
 
 function missGoogle() {
 	DATA.missPoints++
@@ -151,5 +171,11 @@ export function selectPlayer2Coords() {
 	return {
 		x: DATA.coords.player2.x,
 		y: DATA.coords.player2.y,
+	}
+}
+export function selectPoints() {
+	return {
+		catch: DATA.catchPoints,
+		miss: DATA.missPoints,
 	}
 }
