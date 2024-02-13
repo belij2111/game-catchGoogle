@@ -1,9 +1,9 @@
-import { selectPoints } from "../../../data/game-logic.js"
+import { getPoints } from "../../../data/game-logic.js"
 
 export function gameScore() {
 	const element = document.createElement("div")
 
-	element.append(`Catch: ${selectPoints().catch}; Miss: ${selectPoints().miss} `)
+	element.append(`Catch: ${getPoints().catch}; Miss: ${getPoints().miss} `)
 
 	return element
 }

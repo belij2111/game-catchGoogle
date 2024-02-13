@@ -141,9 +141,10 @@ function missGoogle() {
 }
 
 // selectors
+// getter/setter
 ///////////////////////////////////////////////
 
-export function selectCells() {
+export function getCells() {
 	return {
 		x: DATA.cells.columnsCount,
 		y: DATA.cells.rowsCount,
@@ -154,26 +155,26 @@ export function selectCells() {
 // 	return DATA.googleStatus
 // }
 
-export function selectGoogleCoords() {
+export function getGoogleCoords() {
 	return {
 		x: DATA.coords.google.x,
 		y: DATA.coords.google.y,
 	}
 }
 
-export function selectPlayer1Coords() {
+export function getPlayer1Coords() {
 	return {
 		x: DATA.coords.player1.x,
 		y: DATA.coords.player1.y,
 	}
 }
-export function selectPlayer2Coords() {
+export function getPlayer2Coords() {
 	return {
 		x: DATA.coords.player2.x,
 		y: DATA.coords.player2.y,
 	}
 }
-export function selectPoints() {
+export function getPoints() {
 	return {
 		catch: DATA.catchPoints,
 		miss: DATA.missPoints,
