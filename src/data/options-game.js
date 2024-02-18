@@ -22,4 +22,7 @@ export const OPTIONS_GAME = {
 	buttonStart: {
 		header: "Start",
 	},
+	buttonRestart: {
+		header: "Play again",
+	},
 }

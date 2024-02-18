@@ -1,16 +1,17 @@
-import { activatesGame } from "../../data/game-logic.js"
+import { startGame } from "../../data/game-logic.js"
+import { OPTIONS_GAME } from "../../data/options-game.js"
 import { createHtmlElement } from "../../utility/create-htmlElement.utility.js"
 
-//subscribe(renderGame)
-
-export function createButtonStart(desiredSetting) {
+export function createButtonStart() {
 	const params = {
 		nameTag: "button",
 		attribute: "class",
 		nameAttribute: "btn",
-		content: desiredSetting.header,
+		content: OPTIONS_GAME.buttonStart.header,
 	}
 	let buttonStart = createHtmlElement(params)
-	buttonStart.addEventListener("click", activatesGame)
+	buttonStart.addEventListener("click", () => {
+		startGame()
+	})
 	return buttonStart
 }

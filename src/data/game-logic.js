@@ -2,8 +2,7 @@ export const GAME_STATUSES = {
 	SETTINGS: "settings",
 	IN_PROGRESS: "in-progress",
 	PAUSE: "pause",
-	WIN: "win",
-	LOSE: "lose",
+	END_GAME: "end-game",
 }
 
 const DATA = {
@@ -16,7 +15,7 @@ const DATA = {
 		y: 0,
 	},
 	player1: {
-		x: 1,
+		x: 0,
 		y: 1,
 		points: 0,
 	},
@@ -27,8 +26,8 @@ const DATA = {
 	},
 	catchPoints: 0,
 	missPoints: 0,
-	winPoints: 5,
-	win: false,
+	winPoints: 3,
+	status: GAME_STATUSES.SETTINGS,
 }
 
 // logic
@@ -43,12 +42,6 @@ function notify() {
 export function subscribe(newSubscriber) {
 	subscribers.push(newSubscriber)
 }
-
-export function activatesGame() {
-	console.log("STATES_OF_GAME.game")
-	notify()
-}
-
 function getRandomPosition(N) {
 	return Math.floor(Math.random() * N)
 }
@@ -71,6 +64,8 @@ function changeGoogleCoordinates() {
 let googleJumpIntervalId = null
 
 function runGoogleJumpInterval() {
+	console.log("runGoogleJumpInterval")
+
 	clearInterval(googleJumpIntervalId)
 	googleJumpIntervalId = setInterval(missGoogle, 1000)
 }
@@ -129,7 +124,7 @@ export function catchGoogle(player) {
 	player.points++
 
 	if (player.points === DATA.winPoints) {
-		DATA.win = true
+		DATA.status = GAME_STATUSES.END_GAME
 		clearInterval(googleJumpIntervalId)
 	} else {
 		changeGoogleCoordinates()
@@ -143,15 +138,24 @@ function missGoogle() {
 	changeGoogleCoordinates()
 	notify()
 }
+export function startGame() {
+	console.log("start")
 
-export function restart() {
 	DATA.google.x = 0
 	DATA.google.y = 0
 	DATA.player1.points = 0
 	DATA.player2.points = 0
 	DATA.catchPoints = 0
 	DATA.missPoints = 0
-	DATA.win = false
+	DATA.status = GAME_STATUSES.IN_PROGRESS
+	runGoogleJumpInterval()
+	notify()
+}
+
+export function restartGame() {
+	console.log("restart")
+	DATA.status = GAME_STATUSES.SETTINGS
+	notify()
 }
 
 // selectors
@@ -188,5 +192,15 @@ export function getPoints() {
 	return {
 		player1Points: DATA.player1.points,
 		player2Points: DATA.player2.points,
+	}
+}
+export function getGameStatus() {
+	switch (DATA.status) {
+		case GAME_STATUSES.SETTINGS:
+			return GAME_STATUSES.SETTINGS
+		case GAME_STATUSES.IN_PROGRESS:
+			return GAME_STATUSES.IN_PROGRESS
+		case GAME_STATUSES.END_GAME:
+			return GAME_STATUSES.END_GAME
 	}
 }

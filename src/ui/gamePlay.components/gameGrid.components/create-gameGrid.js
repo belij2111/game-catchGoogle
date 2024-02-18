@@ -1,6 +1,6 @@
 import { getCells } from "../../../data/game-logic.js"
 import { Cell } from "./cell.components/create-cell.js"
-export function Grid() {
+export function gameGrid() {
 	const gridElement = document.createElement("table")
 	for (let y = 0; y < getCells().y; y++) {
 		const rowElement = document.createElement("tr")
