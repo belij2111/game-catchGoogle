@@ -20,7 +20,7 @@ export const OPTIONS_GAME = {
 		tunings: ["Catching", "Running"],
 	},
 	buttonStart: {
-		header: "Start",
+		header: "START GAME",
 	},
 	buttonRestart: {
 		header: "Play again",

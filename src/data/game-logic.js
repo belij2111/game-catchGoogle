@@ -7,8 +7,8 @@ export const GAME_STATUSES = {
 
 const DATA = {
 	cells: {
-		columnsCount: 2,
-		rowsCount: 2,
+		columnsCount: 3,
+		rowsCount: 3,
 	},
 	google: {
 		x: 1,

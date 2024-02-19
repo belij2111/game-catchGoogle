@@ -10,14 +10,6 @@ body {
 	background-repeat: no-repeat;
 }
 
-/* .starting {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-content: center;
-	align-items: center;
-} */
 .wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -26,11 +18,13 @@ body {
 	align-items: center;
 	flex-direction: row;
 }
-.wrapper-settings {
+.wrapper-gamePlay {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
-	align-items: stretch;
+	justify-content: space-around;
+	align-content: center;
+	align-items: flex-start;
 }
 
 table td {
@@ -42,4 +36,17 @@ table td {
 img {
 	width: 70%;
 	height: 70%;
+}
+
+.btn {
+	position: absolute;
+	width: 218px;
+	height: 48px;
+	left: 531px;
+	top: 200px;
+	padding: 12px 36px 12px 36px;
+	border: 2px solid rgb(117, 249, 76);
+	border-radius: 10px 2px 10px 2px;
+	box-shadow: 0px -4px 10px 2px rgba(88, 191, 57, 0.25), 0px 4px 10px 2px rgba(88, 191, 57, 0.25);
+	background: rgb(88, 191, 57);
 }
