@@ -16,39 +16,38 @@ import { gameResult } from "./ui/gameResults.components/create-gameResult.js"
 import { initializeGame } from "./ui/initializing-game.js"
 
 function renderApp() {
-	// subscribe(() => {
-	// 	if (prevStatus !== getGameStatus()) {
-	// 		render()
-	// 	}
-	// })
-
 	let prevStatus
+
+	subscribe(() => {
+		if (prevStatus !== getGameStatus()) {
+			render()
+		}
+	})
 
 	function render() {
 		console.log("render")
-		document.body.innerHTML = ""
 		const currentStatus = getGameStatus()
-
+		let gameElement = null
 		switch (currentStatus) {
 			case GAME_STATUSES.SETTINGS:
-				const initialize = initializeGame()
-				document.body.append(initialize)
+				gameElement = initializeGame()
 				break
 			case GAME_STATUSES.IN_PROGRESS:
-				const game = gamePlay()
-				document.body.append(game)
+				gameElement = gamePlay()
 				break
 			case GAME_STATUSES.END_GAME:
-				const result = gameResult()
-				document.body.append(result)
+				gameElement = gameResult()
 				break
+		}
+		if (gameElement) {
+			document.body.innerHTML = ""
+			document.body.append(gameElement)
 		}
 		prevStatus = currentStatus
 	}
 	render()
 }
 renderApp()
-subscribe(renderApp)
 
 window.addEventListener("keyup", (e) => {
 	switch (e.code) {

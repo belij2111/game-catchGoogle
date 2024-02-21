@@ -25,7 +25,6 @@ const DATA = {
 		points: 0,
 	},
 	catchPoints: 0,
-	missPoints: 0,
 	winPoints: 3,
 	status: GAME_STATUSES.SETTINGS,
 }
@@ -134,7 +133,6 @@ export function catchGoogle(player) {
 }
 
 function missGoogle() {
-	DATA.missPoints++
 	changeGoogleCoordinates()
 	notify()
 }
@@ -146,7 +144,6 @@ export function startGame() {
 	DATA.player1.points = 0
 	DATA.player2.points = 0
 	DATA.catchPoints = 0
-	DATA.missPoints = 0
 	DATA.status = GAME_STATUSES.IN_PROGRESS
 	runGoogleJumpInterval()
 	notify()
