@@ -6,7 +6,7 @@ export function initializeGame() {
 	const params = {
 		nameTag: "section",
 		attribute: "class",
-		nameAttribute: "container",
+		attributeValue: "container",
 	}
 	let container = createHtmlElement(params)
 	container.append(createSettings())

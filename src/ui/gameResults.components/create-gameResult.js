@@ -1,12 +1,12 @@
 import { restartGame } from "../../data/game-logic.js"
-import { OPTIONS_GAME } from "../../data/options-game.js"
 import { createHtmlElement } from "../../utility/create-htmlElement.utility.js"
+import { SCENE_ITEMS } from "../sceneItems.components/scene-Items.js"
 
 export function gameResult() {
 	const params = {
 		nameTag: "div",
 		attribute: "class",
-		nameAttribute: "wrapper-gameResult",
+		attributeValue: "wrapper-gameResult",
 	}
 	let container = createHtmlElement(params)
 	container.append(createRestartButton())
@@ -17,8 +17,8 @@ function createRestartButton() {
 	const params = {
 		nameTag: "button",
 		attribute: "class",
-		nameAttribute: "btn",
-		content: OPTIONS_GAME.buttonRestart.header,
+		attributeValue: "btn",
+		content: SCENE_ITEMS.buttonRestart.header,
 	}
 	let restartButton = createHtmlElement(params)
 	restartButton.addEventListener("click", () => {

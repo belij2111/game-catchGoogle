@@ -195,12 +195,5 @@ export function getPoints() {
 	}
 }
 export function getGameStatus() {
-	switch (DATA.status) {
-		case GAME_STATUSES.SETTINGS:
-			return GAME_STATUSES.SETTINGS
-		case GAME_STATUSES.IN_PROGRESS:
-			return GAME_STATUSES.IN_PROGRESS
-		case GAME_STATUSES.END_GAME:
-			return GAME_STATUSES.END_GAME
-	}
+	return DATA.status
 }

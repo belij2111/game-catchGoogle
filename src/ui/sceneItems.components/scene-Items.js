@@ -1,4 +1,4 @@
-export const OPTIONS_GAME = {
+export const SCENE_ITEMS = {
 	gridSize: {
 		header: "Grid size",
 		tunings: ["4x4", "5x5", "6x6", "7x7", "8x8"],

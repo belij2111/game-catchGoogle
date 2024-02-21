@@ -6,7 +6,7 @@ export function gamePlay() {
 	const params = {
 		nameTag: "div",
 		attribute: "class",
-		nameAttribute: "wrapper-gamePlay",
+		attributeValue: "wrapper-gamePlay",
 	}
 	let container = createHtmlElement(params)
 	container.append(gameScore())
