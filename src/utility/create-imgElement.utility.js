@@ -1,5 +1,5 @@
-export function imgElement(newImage) {
+export function imgElement(src) {
 	let container = document.createElement("img")
-	container.src = newImage
+	container.src = src
 	return container
 }
