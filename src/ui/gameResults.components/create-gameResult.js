@@ -3,6 +3,7 @@ import { createHtmlElement } from "../../utility/create-htmlElement.utility.js"
 import { SCENE_ITEMS } from "../sceneItems.components/scene-Items.js"
 
 export function gameResult() {
+	console.log("gameResult")
 	const params = {
 		nameTag: "div",
 		attribute: "class",

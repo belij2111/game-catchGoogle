@@ -133,6 +133,7 @@ export function catchGoogle(player) {
 }
 
 function missGoogle() {
+	console.log("missGoogle")
 	changeGoogleCoordinates()
 	notify()
 }

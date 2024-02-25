@@ -3,6 +3,7 @@ import { createButtonStart } from "./settings.components/create-buttonStart.js"
 import { createSettings } from "./settings.components/create-settings.js"
 
 export function initializeGame() {
+	console.log("initializeGame")
 	const params = {
 		nameTag: "section",
 		attribute: "class",

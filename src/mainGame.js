@@ -18,7 +18,10 @@ import { initializeGame } from "./ui/initializing-game.js"
 function renderApp() {
 	let prevStatus
 
+	// subscribe(render)
+	// console.log("subscribe(render)")
 	subscribe(() => {
+		console.log("subscribe(render)")
 		if (prevStatus !== getGameStatus()) {
 			render()
 		}
